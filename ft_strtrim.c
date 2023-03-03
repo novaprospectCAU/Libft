@@ -59,7 +59,7 @@ static int	fs_back(char const *s1, char const *set)
 	return (idx);
 }
 
-char	*fs_strtrim(char const *s1, int fidx, int bidx)
+static char	*fs_strtrim(char const *s1, int fidx, int bidx)
 {
 	char	*output;
 	int		idx;

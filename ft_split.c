@@ -19,9 +19,10 @@ static int	fs_clear_all(char **output, int count)
 	i = 0;
 	if (output[count] == NULL)
 	{
-		while (i < count && output != NULL)
+		while (i < count)
 		{
 			free(output[i]);
+			output[i] = NULL;
 			i++;
 		}
 		free(output);
@@ -56,7 +57,7 @@ static int	fs_len(const char *s, char c, int idx)
 	len = 0;
 	while (s[idx] && s[idx] != c)
 	{
-		(len)++;
+		len++;
 		idx++;
 	}
 	return (len);

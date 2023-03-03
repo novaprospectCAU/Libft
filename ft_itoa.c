@@ -67,7 +67,7 @@ static char	*if_positive(int n)
 	*result-- = '\0';
 	while (n > 0)
 	{
-		*result-- = (n % 10) + '0';
+		*result-- = (char)((n % 10) + '0');
 		n /= 10;
 	}
 	result++;
@@ -95,7 +95,7 @@ static char	*if_negative(int n)
 	*result-- = '\0';
 	while (n > 0)
 	{
-		*result-- = (n % 10) + '0';
+		*result-- = (char)((n % 10) + '0');
 		n /= 10;
 	}
 	*result = '-';

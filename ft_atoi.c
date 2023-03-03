@@ -12,6 +12,60 @@
 
 #include "libft.h"
 
+static int	fs_negative(const char *nptr)
+{
+	long	result_l;
+	long	temp;
+	int		result;
+
+	result = 0;
+	result_l = 0;
+	temp = 0;
+	while (*nptr && *nptr > 47 && *nptr < 58)
+	{
+		result *= 10;
+		result_l *= 10;
+		result += (*nptr - '0');
+		result_l += (*nptr - '0');
+		if (result_l < temp)
+			return (0);
+		temp = result_l;
+		nptr++;
+	}
+	return ((int)(result * -1));
+}
+
+static int	fs_positive(const char *nptr)
+{
+	long	result_l;
+	long	temp;
+	int		result;
+
+	result = 0;
+	result_l = 0;
+	temp = 0;
+	while (*nptr && *nptr > 47 && *nptr < 58)
+	{
+		result *= 10;
+		result_l *= 10;
+		result += (*nptr - '0');
+		result_l += (*nptr - '0');
+		if (result_l < temp)
+			return (-1);
+		temp = result_l;
+		nptr++;
+	}
+	return (result);
+}
+
+static int	fs_atoi(const char *nptr, int mflag)
+{
+	if (mflag == -1)
+		return (fs_negative(nptr));
+	else
+		return (fs_positive(nptr));
+}
+
 int	ft_atoi(const char *nptr)
 {
 	int	result;
@@ -28,11 +82,5 @@ int	ft_atoi(const char *nptr)
 			mflag = -1;
 		nptr++;
 	}
-	while (*nptr && (*nptr > 47 && *nptr < 58))
-	{
-		result *= 10;
-		result += (*nptr - '0');
-		nptr++;
-	}
-	return (mflag * result);
+	return (fs_atoi(nptr, mflag));
 }

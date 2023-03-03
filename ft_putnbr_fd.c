@@ -42,7 +42,7 @@ void	ft_putnbr_fd(int n, int fd)
 		return ;
 	while (n > 0)
 	{
-		arr[index++] = n % 10 + '0';
+		arr[index++] = (char)(n % 10 + '0');
 		n /= 10;
 	}
 	while (--index >= 0)
